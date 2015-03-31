@@ -276,15 +276,19 @@ let s:darkroast      = '88633f'
 
 let s:skyblue        = "8fbfdc"
 let s:steelblue      = "c6b6ee"
+let s:darkblue       = "8197bf"
 let s:golden         = "fad07a"
+let s:paleorange     = "ffb964"
 let s:olive          = "99ad6a"
 let s:darkolive      = "556633"
 let s:palegreen      = "799d6a"
 let s:terracotta     = "cf6a4c"
 
+let s:blackboard     = "050505"
+
 " Configuration options
 if !exists('g:jupiter_gutter_color')
-    let s:gutter = s:blackestgravel
+    let s:gutter = s:blackboard
 endif
 
 if exists('g:jupiter_tabline')
@@ -306,6 +310,7 @@ endif
 if !exists("g:jupiter_bg_color")
   let g:jupiter_bg_color = s:blackestgravel
 end
+let g:jupiter_bg_color = s:blackboard
 
 call s:X( "Normal", s:plain, g:jupiter_bg_color, "", "White", "" )
 set background=dark
@@ -359,10 +364,10 @@ call s:X( "WildMenu", "f0a0c0", "302028", "", "Magenta", "")
 "call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X( "LineNr", s:mediumgravel, s:gutter, "", "", "" )
 
-call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
+call s:X( "Folded","a0a8b0","384048","italic",s:termBlack,"")
 call s:X( "FoldColumn", "535D66", s:gutter, "", "", s:termBlack )
 call s:X( "SignColumn", "777777", s:gutter, "", "", s:termBlack )
-call s:X("ColorColumn","","000000","","",s:termBlack)
+call s:X( "ColorColumn","","000000","","",s:termBlack)
 
 "call s:X("Directory","dad085","","","Yellow","")
 call s:X( "Directory", s:dirtyblonde, "", "", "Yellow", "" )
@@ -385,24 +390,18 @@ call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 call s:X( "Tag", "", "", "bold", "", "" )
 
 " ##### Syntax highlighting
-"call s:X("Special","799d6a","","","Green","")
 call s:X( "Special", s:palegreen, "", "", "Green", "" )
 
-"call s:X( "Comment", "888888", "", "italic", "Grey", "" )
+" Comments
 call s:X( "Comment", s:gravel, "", "italic", "Grey", "" ) "TODO
 call s:X( "SpecialComment", s:gravel, "", "bold", "Grey", "" ) "TODO
 call s:X( "Todo", s:gravel, s:dalespale, "italic,bold", s:termBlack, "Yellow" )
 
-"call s:X("String","99ad6a","","","Green","")
-"call s:X("StringDelimiter","556633","","","DarkGreen","")
+" Strings
 call s:X( "String", s:olive, "", "", "Green", "")
 call s:X( "StringDelimiter", s:darkolive, "", "", "DarkGreen", "" )
 
-"call s:X("Constant","cf6a4c","","","Red","")
-"call s:X("Character","cf6a4c","","","Red","")
-"call s:X("Boolean","cf6a4c","","","Red","")
-"call s:X("Number","cf6a4c","","","Red","")
-"call s:X("Float","cf6a4c","","","Red","")
+" Constants
 call s:X( "Constant", s:terracotta, "", "", "Red", "" )
 call s:X( "Character", s:terracotta, "", "", "Red", "" )
 call s:X( "Boolean", s:terracotta, "", "", "Red", "" )
@@ -410,21 +409,41 @@ call s:X( "Number", s:terracotta, "", "", "Red", "" )
 call s:X( "Float", s:terracotta, "", "", "Red", "" )
 call s:X( "SpecialChar", s:terracotta, "", "", "Red", "" )
 
+" Control flow
+call s:X( "Statement",   s:taffy, "", "bold", "", "" )
+call s:X( "Keyword",     s:taffy, "", "bold", "", "" )
+call s:X( "Conditional", s:taffy, "", "bold", "", "" )
+call s:X( "Operator",    s:taffy, "", "none", "", "" )
+call s:X( "Label",       s:taffy, "", "none", "", "" )
+call s:X( "Repeat",      s:taffy, "", "none", "", "" )
 
 call s:X("Delimiter","668799","","","Grey","")
 
-call s:X("Identifier","c6b6ee","","","LightCyan","")
-call s:X("Structure","8fbfdc","","","LightCyan","")
-call s:X("Function","fad07a","","","Yellow","")
-call s:X("Statement","8197bf","","","DarkBlue","")
-call s:X("PreProc","8fbfdc","","","LightBlue","")
+"call s:X("Identifier",s:steelblue,"","","LightCyan","")
+"call s:X("Function",s:golden,"","","Yellow","")
+call s:X( "Identifier", s:orange, "", "", "Orange", "" )
+call s:X( "Function", s:orange, "", "", "Orange", "" )
 
-hi! link Operator Structure
+"call s:X("PreProc","8fbfdc","","","LightBlue","")
+call s:X( "PreProc", s:lime, "", "", "Green", "" )
+call s:X( "Macro", s:lime, "", "", "Green", "" )
+call s:X( "Define", s:lime, "", "", "Green", "" )
+call s:X( "PreCondit", s:lime, "", "bold", "Green", "" )
 
-call s:X("Type","ffb964","","","Yellow","")
-call s:X("NonText","606060",g:jellybeans_background_color,"",s:termBlack,"")
+"call s:X("Structure",s:skyblue,"","","LightCyan","")
+"hi! link Operator Structure
+"call s:X("Statement",s:darkblue,"","","DarkBlue","")
+call s:X( "Structure", s:taffy, "", "", "Red", "" )
+call s:X( "Statement", s:darkblue, "", "", "DarkBlue", "" ) "TODO
+call s:X( "StorageClass", s:taffy, "", "", "Red", "" )
+call s:X( "Typedef", s:taffy, "", "", "Red", "" )
 
-call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
+"call s:X("Type",s:paleorange,"","","Yellow","")
+"call s:X("NonText","606060",g:jellybeans_background_color,"",s:termBlack,"")
+call s:X( "Type", s:skyblue, "", "", "Red", "" ) "TODO
+call s:X("NonText","606060",g:jupiter_bg_color,"",s:termBlack,"")
+
+"call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
 
