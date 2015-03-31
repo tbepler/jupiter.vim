@@ -285,6 +285,7 @@ let s:palegreen      = "799d6a"
 let s:terracotta     = "cf6a4c"
 
 let s:blackboard     = "050505"
+let s:lilac          = "8d469a" 
 
 " Configuration options
 if !exists('g:jupiter_gutter_color')
@@ -395,34 +396,34 @@ call s:X( "Special", s:palegreen, "", "", "Green", "" )
 " Comments
 call s:X( "Comment", s:gravel, "", "italic", "Grey", "" ) "TODO
 call s:X( "SpecialComment", s:gravel, "", "bold", "Grey", "" ) "TODO
-call s:X( "Todo", s:gravel, s:dalespale, "italic,bold", s:termBlack, "Yellow" )
+call s:X( "Todo", s:lilac, s:dalespale, "italic,bold", s:termBlack, "Yellow" )
 
 " Strings
 call s:X( "String", s:olive, "", "", "Green", "")
 call s:X( "StringDelimiter", s:darkolive, "", "", "DarkGreen", "" )
 
 " Constants
-call s:X( "Constant", s:terracotta, "", "", "Red", "" )
-call s:X( "Character", s:terracotta, "", "", "Red", "" )
-call s:X( "Boolean", s:terracotta, "", "", "Red", "" )
-call s:X( "Number", s:terracotta, "", "", "Red", "" )
-call s:X( "Float", s:terracotta, "", "", "Red", "" )
-call s:X( "SpecialChar", s:terracotta, "", "", "Red", "" )
+call s:X( "Constant", s:lilac, "", "", "Red", "" )
+call s:X( "Character", s:lilac, "", "", "Red", "" )
+call s:X( "Boolean", s:lilac, "", "", "Red", "" )
+call s:X( "Number", s:lilac, "", "", "Red", "" )
+call s:X( "Float", s:lilac, "", "", "Red", "" )
+call s:X( "SpecialChar", s:lilac, "", "", "Red", "" )
 
 " Control flow
-call s:X( "Statement",   s:taffy, "", "bold", "", "" )
-call s:X( "Keyword",     s:taffy, "", "bold", "", "" )
-call s:X( "Conditional", s:taffy, "", "bold", "", "" )
-call s:X( "Operator",    s:taffy, "", "none", "", "" )
-call s:X( "Label",       s:taffy, "", "none", "", "" )
-call s:X( "Repeat",      s:taffy, "", "none", "", "" )
+call s:X( "Statement",   s:orange, "", "", "", "" )
+call s:X( "Keyword",     s:orange, "", "", "", "" )
+call s:X( "Conditional", s:orange, "", "", "", "" )
+call s:X( "Operator",    s:orange, "", "", "", "" )
+call s:X( "Label",       s:orange, "", "", "", "" )
+call s:X( "Repeat",      s:orange, "", "", "", "" )
 
 call s:X("Delimiter","668799","","","Grey","")
 
 "call s:X("Identifier",s:steelblue,"","","LightCyan","")
 "call s:X("Function",s:golden,"","","Yellow","")
-call s:X( "Identifier", s:orange, "", "", "Orange", "" )
-call s:X( "Function", s:orange, "", "", "Orange", "" )
+call s:X( "Identifier", s:terracotta, "", "", "Orange", "" )
+call s:X( "Function", s:terracotta, "", "", "Orange", "" )
 
 "call s:X("PreProc","8fbfdc","","","LightBlue","")
 call s:X( "PreProc", s:lime, "", "", "Green", "" )
@@ -434,43 +435,44 @@ call s:X( "PreCondit", s:lime, "", "bold", "Green", "" )
 "hi! link Operator Structure
 "call s:X("Statement",s:darkblue,"","","DarkBlue","")
 call s:X( "Structure", s:taffy, "", "", "Red", "" )
-call s:X( "Statement", s:darkblue, "", "", "DarkBlue", "" ) "TODO
 call s:X( "StorageClass", s:taffy, "", "", "Red", "" )
 call s:X( "Typedef", s:taffy, "", "", "Red", "" )
 
 "call s:X("Type",s:paleorange,"","","Yellow","")
 "call s:X("NonText","606060",g:jellybeans_background_color,"",s:termBlack,"")
 call s:X( "Type", s:skyblue, "", "", "Red", "" ) "TODO
-call s:X("NonText","606060",g:jupiter_bg_color,"",s:termBlack,"")
+call s:X( "NonText", "606060", g:jupiter_bg_color, "", s:termBlack, "" )
+
+call s:X( "Exception", s:lime, "", "", "", "" )
+
+call s:X( "Error", s:snow, s:taffy, "bold", "", "" )
+call s:X( "Debug", s:snow, "", "bold", "", "" )
+call s:X( "Ignore", s.gravel, "", "", "", "" )
 
 "call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
-
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
 
 
 " Spell Checking
-
-call s:X("SpellBad","","902020","underline","","DarkRed")
-call s:X("SpellCap","","0000df","underline","","Blue")
-call s:X("SpellRare","","540063","underline","","DarkMagenta")
-call s:X("SpellLocal","","2D7067","underline","","Green")
+if has("spell")
+  call s:X("SpellBad","","902020","underline","","DarkRed")
+  call s:X("SpellCap","","0000df","underline","","Blue")
+  call s:X("SpellRare","","540063","underline","","DarkMagenta")
+  call s:X("SpellLocal","","2D7067","underline","","Green")
+endif
 
 " Diff
-
 hi! link diffRemoved Constant
 hi! link diffAdded String
 
 " VimDiff
-
 call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
 call s:X("DiffDelete","40000A","700009","","DarkRed","DarkRed")
 call s:X("DiffChange","","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 
 " PHP
-
 hi! link phpFunctions Function
-call s:X("StorageClass","c59f6f","","","Red","")
 hi! link phpSuperglobal Identifier
 hi! link phpQuoteSingle StringDelimiter
 hi! link phpQuoteDouble StringDelimiter
@@ -483,10 +485,48 @@ hi! link phpVarSelector Identifier
 
 " Python
 
-hi! link pythonOperator Statement
+hi! link pythonOperator     Operator
+hi! link pythonBuiltin      Structure
+hi! link pythonBuiltinObj   Structure
+hi! link pythonBuiltinFunc  Structure
+hi! link pythonEscape       Structure
+hi! link pythonException    Exception
+hi! link pythonExceptions   Exception
+hi! link pythonPrecondit    PreCondit
+hi! link pythonDecorator    Structure
+call s:X( "pythonRun", s:gravel, "", "bold", "", "" )
+call s:X( "pythonCoding", s:gravel, "", "bold", "", "" )
+
+" LaTeX
+"hi! link texStatement   Statement
+"hi! link texMathZoneX   Operator
+"hi! link texMathZoneA   Operator
+"hi! link texMathZoneB   Operator
+"hi! link texMathZoneC   Operator
+"hi! link texMathZoneD   Operator
+"hi! link texMathZoneE   Operator
+"hi! link texMathZoneV   Operator
+"hi! link texMath        Operator
+"hi! link texMathMatcher Operator
+"hi! link texRefLabel    Type
+"call s:X( "texStatement", "tardis", "", "none" )
+"call s:X( "texMathZoneX", "orange", "", "none" )
+"call s:X( "texMathZoneA", "orange", "", "none" )
+"call s:X( "texMathZoneB", "orange", "", "none" )
+"call s:X( "texMathZoneC", "orange", "", "none" )
+"call s:X( "texMathZoneD", "orange", "", "none" )
+"call s:X( "texMathZoneE", "orange", "", "none" )
+"call s:X( "texMathZoneV", "orange", "", "none" )
+"call s:X( "texMathZoneX", "orange", "", "none" )
+"call s:X( "texMath", "orange", "", "none" )
+"call s:X( "texMathMatcher", "orange", "", "none" )
+"call s:X( "texRefLabel", "dirtyblonde", "", "none" )
+"call s:X( "texRefZone", "lime", "", "none" )
+"call s:X( "texComment", "darkroast", "", "none" )
+"call s:X( "texDelimiter", "orange", "", "none" )
+"call s:X( "texZone", "brightgravel", "", "none" )
 
 " Ruby
-
 hi! link rubySharpBang Comment
 call s:X("rubyClass","447799","","","DarkBlue","")
 call s:X("rubyIdentifier","c6b6fe","","","Cyan","")
