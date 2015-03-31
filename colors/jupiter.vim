@@ -447,7 +447,7 @@ call s:X( "Exception", s:lime, "", "", "", "" )
 
 call s:X( "Error", s:snow, s:taffy, "bold", "", "" )
 call s:X( "Debug", s:snow, "", "bold", "", "" )
-call s:X( "Ignore", s.gravel, "", "", "", "" )
+call s:X( "Ignore", s:gravel, "", "", "", "" )
 
 "call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
@@ -528,16 +528,20 @@ call s:X( "pythonCoding", s:gravel, "", "bold", "", "" )
 
 " Ruby
 hi! link rubySharpBang Comment
-call s:X("rubyClass","447799","","","DarkBlue","")
-call s:X("rubyIdentifier","c6b6fe","","","Cyan","")
-hi! link rubyConstant Type
+hi! link rubyClass Structure
+hi! link rubyIdentifier Identifier
+"call s:X("rubyClass","447799","","","DarkBlue","")
+"call s:X("rubyIdentifier","c6b6fe","","","Cyan","")
+hi! link rubyConstant Constant
 hi! link rubyFunction Function
-
-call s:X("rubyInstanceVariable","c6b6fe","","","Cyan","")
-call s:X("rubySymbol","7697d6","","","Blue","")
+hi! link rubyInstanceVariable Identifier
+"call s:X("rubyInstanceVariable","c6b6fe","","","Cyan","")
+"call s:X("rubySymbol","7697d6","","","Blue","")
+hi! link rubySymbol Operator
 hi! link rubyGlobalVariable rubyInstanceVariable
 hi! link rubyModule rubyClass
-call s:X("rubyControl","7597c6","","","Blue","")
+hi! link rubyControl Control
+"call s:X("rubyControl","7597c6","","","Blue","")
 
 hi! link rubyString String
 hi! link rubyStringDelimiter StringDelimiter
