@@ -7,7 +7,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "jellybeans"
+let colors_name = "jupiter"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
   let s:low_color = 0
@@ -249,59 +249,169 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
 endfun
 " }}}
 
-if !exists("g:jellybeans_background_color")
-  let g:jellybeans_background_color = "151515"
+"define some colors - from badwolf colorscheme
+let s:plain          = 'f8f6f2'
+let s:snow           = 'ffffff'
+let s:coal           = '000000'
+let s:brightgravel   = 'd9cec3'
+let s:lightgravel    = '998f84'
+let s:gravel         = '857f78'
+let s:mediumgravel   = '666462'
+let s:deepgravel     = '45413b'
+let s:deepergravel   = '35322d'
+let s:darkgravel     = '242321'
+let s:blackgravel    = '1c1b1a'
+let s:blackestgravel = '141413'
+let s:dalespale      = 'fade3e'
+let s:dirtyblonde    = 'f4cf86'
+let s:taffy          = 'ff2c4b'
+let s:saltwatertaffy = '8cffba'
+let s:tardis         = '0a9dff'
+let s:orange         = 'ffa724'
+let s:lime           = 'aeee00'
+let s:dress          = 'ff9eb8'
+let s:toffee         = 'b88853'
+let s:coffee         = 'c7915b'
+let s:darkroast      = '88633f'
+
+let s:skyblue        = "8fbfdc"
+let s:steelblue      = "c6b6ee"
+let s:golden         = "fad07a"
+let s:olive          = "99ad6a"
+let s:darkolive      = "556633"
+let s:palegreen      = "799d6a"
+let s:terracotta     = "cf6a4c"
+
+" Configuration options
+if !exists('g:jupiter_gutter_color')
+    let s:gutter = s:blackestgravel
+endif
+
+if exists('g:jupiter_tabline')
+    if g:jupiter_tabline == 0
+        let s:tabline = s:blackestgravel
+    elseif  g:jupiter_tabline == 1
+        let s:tabline = s:blackgravel
+    elseif  g:jupiter_tabline == 2
+        let s:tabline = s:darkgravel
+    elseif  g:jupiter_tabline == 3
+        let s:tabline = s:deepgravel
+    else
+        let s:tabline = s:blackestgravel
+    endif
+else
+    let s:tabline = s:blackgravel
+endif
+
+if !exists("g:jupiter_bg_color")
+  let g:jupiter_bg_color = s:blackestgravel
 end
 
-call s:X("Normal","e8e8d3",g:jellybeans_background_color,"","White","")
+call s:X( "Normal", s:plain, g:jupiter_bg_color, "", "White", "" )
 set background=dark
 
-if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
+if !exists("g:jupiter_use_lowcolor_black") || g:jupiter_use_lowcolor_black
     let s:termBlack = "Black"
 else
     let s:termBlack = "Grey"
 endif
 
 if version >= 700
-  call s:X("CursorLine","","1c1c1c","","",s:termBlack)
-  call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
-  call s:X("MatchParen","ffffff","556779","bold","","DarkCyan")
+  "call s:X( "CursorLine", "", s:darkgravel, "", "", s:termBlack )
+  hi clear CursorLine
+  call s:X( "CursorColumn", "", s:darkgravel, "", "", s:termBlack )
+  call s:X( "CursorLineNR", s:dalespale, "", "none", "White", "" )
+ 
+  call s:X( "MatchParen", s:darkgravel, s:dalespale, "bold", "", "" )
 
-  call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
-  call s:X("TabLineFill","9098a0","","","",s:termBlack)
-  call s:X("TabLineSel","000000","f0f0f0","italic,bold",s:termBlack,"White")
+  call s:X( "TabLine", s:plain, s:tabline, "", "", s:termBlack )
+  call s:X( "TabLineFill", s:plain, s:tabline, "", "", s:termBlack )
+  call s:X( "TabLineSel", s:coal , s:tardis, "", s:termBlack,"White")
 
   " Auto-completion
-  call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
-  call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
+  " call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
+  " call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
+  call s:X( "Pmenu", s:plain, s:deepergravel, "", "", "" )
+  call s:X( "PmenuSel", s:coal, s:tardis, "bold", "", "" )
+  call s:X( "PmenuSbar", "", s:deepergravel, "", "", "" )
+  call s:X( "PmenuThumb", s:brightgravel, "", "", "", "" )
 endif
 
-call s:X("Visual","","404040","","",s:termBlack)
-call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
+"call s:X("Visual","","404040","","",s:termBlack)
+call s:X( "Visual", "", s:deepgravel, "", "", "" )
+call s:X( "VisualNOS", "",  s:deepgravel, "", "", "" )
 
-call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
-call s:X("CursorLineNr","ccc5c4","","none","White","")
-call s:X("Comment","888888","","italic","Grey","")
-call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
+"call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
+call s:X( "Cursor",  s:coal, s:tardis, "bold", "", "" )
+call s:X( "vCursor", s:coal, s:tardis, "bold", "", "" )
+call s:X( "iCursor", s:coal, s:tardis, "", "", "" )
 
-call s:X("StatusLine","000000","dddddd","italic","","White")
-call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
-call s:X("WildMenu","f0a0c0","302028","","Magenta","")
+"call s:X("StatusLine","000000","dddddd","italic","","White")
+"call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
+call s:X( "StatusLine", s:coal, s:tardis, "bold", "", "White" )
+call s:X( "StatusLineNC", s:snow, s:deepgravel, "bold", "White", "Black" )
+
+"call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
+call s:X( "VertSplit", s:snow, s:deepgravel , "", s:termBlack, s:termBlack )
+
+call s:X( "WildMenu", "f0a0c0", "302028", "", "Magenta", "")
+
+"call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
+call s:X( "LineNr", s:mediumgravel, s:gutter, "", "", "" )
 
 call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
-call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
-call s:X("SignColumn","777777","333333","","",s:termBlack)
+call s:X( "FoldColumn", "535D66", s:gutter, "", "", s:termBlack )
+call s:X( "SignColumn", "777777", s:gutter, "", "", s:termBlack )
 call s:X("ColorColumn","","000000","","",s:termBlack)
 
-call s:X("Title","70b950","","bold","Green","")
+"call s:X("Directory","dad085","","","Yellow","")
+call s:X( "Directory", s:dirtyblonde, "", "", "Yellow", "" )
 
-call s:X("Constant","cf6a4c","","","Red","")
-call s:X("Special","799d6a","","","Green","")
+"call s:X("Title","70b950","","bold","Green","")
+call s:X( "Title", s:lime, "", "", "Green", "" )
+
+"call s:X("ErrorMsg","","902020","","","DarkRed")
+"hi! link Error ErrorMsg
+"hi! link MoreMsg Special
+"call s:X("Question","65C254","","","Green","")
+call s:X( "ErrorMsg", s:taffy, "", "bold", "", "DarkRed" )
+hi! link Error ErrorMsg
+call s:X( "MoreMsg", s:dalespale, "", "bold", "", "Yellow" )
+call s:X( "ModeMsg", s:golden, "", "bold", "", "Yellow" )
+call s:X( "Question", s:golden, "", "bold", "", "Yellow" )
+call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
+
+" for ctags
+call s:X( "Tag", "", "", "bold", "", "" )
+
+" ##### Syntax highlighting
+"call s:X("Special","799d6a","","","Green","")
+call s:X( "Special", s:palegreen, "", "", "Green", "" )
+
+"call s:X( "Comment", "888888", "", "italic", "Grey", "" )
+call s:X( "Comment", s:gravel, "", "italic", "Grey", "" ) "TODO
+call s:X( "SpecialComment", s:gravel, "", "bold", "Grey", "" ) "TODO
+call s:X( "Todo", s:gravel, s:dalespale, "italic,bold", s:termBlack, "Yellow" )
+
+"call s:X("String","99ad6a","","","Green","")
+"call s:X("StringDelimiter","556633","","","DarkGreen","")
+call s:X( "String", s:olive, "", "", "Green", "")
+call s:X( "StringDelimiter", s:darkolive, "", "", "DarkGreen", "" )
+
+"call s:X("Constant","cf6a4c","","","Red","")
+"call s:X("Character","cf6a4c","","","Red","")
+"call s:X("Boolean","cf6a4c","","","Red","")
+"call s:X("Number","cf6a4c","","","Red","")
+"call s:X("Float","cf6a4c","","","Red","")
+call s:X( "Constant", s:terracotta, "", "", "Red", "" )
+call s:X( "Character", s:terracotta, "", "", "Red", "" )
+call s:X( "Boolean", s:terracotta, "", "", "Red", "" )
+call s:X( "Number", s:terracotta, "", "", "Red", "" )
+call s:X( "Float", s:terracotta, "", "", "Red", "" )
+call s:X( "SpecialChar", s:terracotta, "", "", "Red", "" )
+
+
 call s:X("Delimiter","668799","","","Grey","")
-
-call s:X("String","99ad6a","","","Green","")
-call s:X("StringDelimiter","556633","","","DarkGreen","")
 
 call s:X("Identifier","c6b6ee","","","LightCyan","")
 call s:X("Structure","8fbfdc","","","LightCyan","")
@@ -317,12 +427,6 @@ call s:X("NonText","606060",g:jellybeans_background_color,"",s:termBlack,"")
 call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
-
-call s:X("Directory","dad085","","","Yellow","")
-call s:X("ErrorMsg","","902020","","","DarkRed")
-hi! link Error ErrorMsg
-hi! link MoreMsg Special
-call s:X("Question","65C254","","","Green","")
 
 
 " Spell Checking
