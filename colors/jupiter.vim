@@ -273,6 +273,41 @@ let s:dress          = 'ff9eb8'
 let s:toffee         = 'b88853'
 let s:coffee         = 'c7915b'
 let s:darkroast      = '88633f'
+let s:darkroast      = '88633f'
+
+" base grey-scale colors
+let s:plain          = 'f8f6f2'
+let s:snow           = 'ffffff'
+let s:coal           = '000000'
+let s:brightgravel   = 'd9cec3'
+let s:lightgravel    = '998f84'
+let s:gravel         = '857f78'
+let s:mediumgravel   = '666462'
+let s:deepgravel     = '45413b'
+let s:deepergravel   = '35322d'
+let s:darkgravel     = '242321'
+let s:blackgravel    = '1c1b1a'
+let s:blackestgravel = '141413'
+let s:blackboard     = "050505"
+
+"red-yellow scale
+let s:r1 = "e62d33"
+let s:r2 = "e65635"
+let s:o1 = "e67f37"
+let s:o2 = "e6a839"
+let s:y1 = "e6d13b"
+let s:y2 = "e6fa3e"
+
+" blue scale
+let s:b1 = "5142ff"
+let s:b2 = "6379f2"
+let s:b3 = "75b0e5"
+let s:b4 = "87e8d9"
+
+"accent colors
+let s:tardis         = '0a9dff'
+let s:lime           = 'aeee00'
+
 
 let s:skyblue        = "8fbfdc"
 let s:steelblue      = "c6b6ee"
@@ -286,6 +321,11 @@ let s:terracotta     = "cf6a4c"
 
 let s:blackboard     = "050505"
 let s:lilac          = "8d469a" 
+
+" Configuration options
+if !exists('g:jupiter_gutter_color')
+    let s:gutter = s:blackboard
+endif
 
 " Configuration options
 if !exists('g:jupiter_gutter_color')
@@ -387,6 +427,53 @@ call s:X( "ModeMsg", s:golden, "", "bold", "", "Yellow" )
 call s:X( "Question", s:golden, "", "bold", "", "Yellow" )
 call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 
+" ##### Syntax groups
+" *Comment
+"
+" *Constant
+" String
+" Character
+" Number
+" Boolean
+" Float
+"
+" *Identifier
+" Function
+"
+" *Statement
+" Conditional
+" Repeat
+" Label
+" Operator
+" Keyword
+" Exception
+"
+" *PreProc
+" Include
+" Define
+" Macro
+" PreCondit
+"
+" *Type
+" StorageClass
+" Structure
+" Typedef
+"
+" *Special
+" SpecialChar
+" Tag
+" Delimiter
+" SpecialComment
+" Debug
+"
+" *Underlined
+"
+" *Ignore
+"
+" *Error
+"
+" *Todo
+
 " for ctags
 call s:X( "Tag", "", "", "bold", "", "" )
 
@@ -411,7 +498,7 @@ call s:X( "Float", s:lilac, "", "", "Red", "" )
 call s:X( "SpecialChar", s:lilac, "", "", "Red", "" )
 
 " Control flow
-call s:X( "Statement",   s:orange, "", "", "", "" )
+call s:X( "Statement",   s:terracotta, "", "", "", "" )
 call s:X( "Keyword",     s:orange, "", "", "", "" )
 call s:X( "Conditional", s:orange, "", "", "", "" )
 call s:X( "Operator",    s:orange, "", "", "", "" )
@@ -435,7 +522,7 @@ call s:X( "PreCondit", s:lime, "", "bold", "Green", "" )
 "hi! link Operator Structure
 "call s:X("Statement",s:darkblue,"","","DarkBlue","")
 call s:X( "Structure", s:taffy, "", "", "Red", "" )
-call s:X( "StorageClass", s:taffy, "", "", "Red", "" )
+call s:X( "StorageClass", s:terracotta, "", "", "Red", "" )
 call s:X( "Typedef", s:taffy, "", "", "Red", "" )
 
 "call s:X("Type",s:paleorange,"","","Yellow","")
