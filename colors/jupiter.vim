@@ -267,7 +267,7 @@ let s:dirtyblonde    = 'f4cf86'
 let s:taffy          = 'ff2c4b'
 let s:saltwatertaffy = '8cffba'
 let s:tardis         = '0a9dff'
-let s:orange         = 'ffa724'
+"let s:orange         = 'ffa724'
 let s:lime           = 'aeee00'
 let s:dress          = 'ff9eb8'
 let s:toffee         = 'b88853'
@@ -296,18 +296,49 @@ let s:r2 = "e65635"
 let s:o1 = "e67f37"
 let s:o2 = "e6a839"
 let s:y1 = "e6d13b"
-let s:y2 = "e6fa3e"
+let s:y2 = "dee160"
 
 " blue scale
 let s:b1 = "5142ff"
 let s:b2 = "6379f2"
 let s:b3 = "75b0e5"
-let s:b4 = "87e8d9"
+let s:b4 = "7fbdb4"
 
 "accent colors
 let s:tardis         = '0a9dff'
+let s:lilac          = "8d469a" 
 let s:lime           = 'aeee00'
 
+let s:blue1 = [ "E1DFEE", "8879D1", "5A45C3", "3113C7", "1F0892" ]
+let s:blue2 = [ "C5CFFF", "7EA7BD", "3D7B9C", "0F6A9B", "045079" ]
+
+let s:notorange = {}
+"let s:notorange.palest = "FFD9AF"
+let s:notorange.pale = "FFD59A"
+let s:notorange.base = "FFBA58"
+let s:notorange.bright = "FFA019"
+let s:notorange.brightest = "FF9500"
+
+let s:yellow = {}
+"let s:yellow.palest = "FFF0A4"
+let s:yellow.pale = "FFEF9a"
+let s:yellow.base = "FFE458"
+let s:yellow.bright = "FFDA19"
+let s:yellow.brightest = "FFD600"
+
+let s:red = {}
+"let s:red.palest = "FFAAA4"
+let s:red.pale = "FFA29A"
+let s:red.base = "FF6458"
+let s:red.bright = "FF2A19"
+let s:red.brightest = "FF1300"
+
+let s:blue = {}
+"let s:blue.palest = "AAD7FF"
+let s:blue.pale = "9BCBF6"
+let s:blue.base = "5FACF2"
+let s:blue.bright = "2792F2"
+let s:blue.brightest = "0280F0"
 
 let s:skyblue        = "8fbfdc"
 let s:steelblue      = "c6b6ee"
@@ -429,6 +460,7 @@ call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 
 " ##### Syntax groups
 " *Comment
+call s:X( "Comment", s:gravel, "", "italic", "", "" )
 "
 " *Constant
 " String
@@ -436,9 +468,16 @@ call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 " Number
 " Boolean
 " Float
+
+" use pale blue for string and darker blue otherwise 
+call s:X( "Constant", s:blue1[2], "", "", "", "" )
+call s:X( "String", s:blue2[0], "", "", "", "" )
 "
 " *Identifier
 " Function
+"
+" use pale yellow for identifiers
+call s:X( "Identifier", s:yellow.bright, "", "", "", "Yellow" )
 "
 " *Statement
 " Conditional
@@ -448,16 +487,28 @@ call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 " Keyword
 " Exception
 "
+" use red/orange for statements
+call s:X( "Statement", s:notorange.bright, "", "", "", "" )
+call s:X( "Operator", s:red.base, "", "", "", "" )
+call s:X( "Exception", s:lime, "", "", "", "" )
+"
 " *PreProc
 " Include
 " Define
 " Macro
 " PreCondit
 "
+"  pop pre-processor commands as lime
+call s:X( "PreProc", s:lime, "", "", "", "" )
+"
 " *Type
 " StorageClass
 " Structure
 " Typedef
+"
+"  use blues for types
+call s:X( "Type", s:blue2[3], "", "", "", "" )
+call s:X( "StorageClass", s:yellow.base, "", "", "", "" )
 "
 " *Special
 " SpecialChar
@@ -473,72 +524,6 @@ call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
 " *Error
 "
 " *Todo
-
-" for ctags
-call s:X( "Tag", "", "", "bold", "", "" )
-
-" ##### Syntax highlighting
-call s:X( "Special", s:palegreen, "", "", "Green", "" )
-
-" Comments
-call s:X( "Comment", s:gravel, "", "italic", "Grey", "" ) "TODO
-call s:X( "SpecialComment", s:gravel, "", "bold", "Grey", "" ) "TODO
-call s:X( "Todo", s:lilac, s:dalespale, "italic,bold", s:termBlack, "Yellow" )
-
-" Strings
-call s:X( "String", s:olive, "", "", "Green", "")
-call s:X( "StringDelimiter", s:darkolive, "", "", "DarkGreen", "" )
-
-" Constants
-call s:X( "Constant", s:lilac, "", "", "Red", "" )
-call s:X( "Character", s:lilac, "", "", "Red", "" )
-call s:X( "Boolean", s:lilac, "", "", "Red", "" )
-call s:X( "Number", s:lilac, "", "", "Red", "" )
-call s:X( "Float", s:lilac, "", "", "Red", "" )
-call s:X( "SpecialChar", s:lilac, "", "", "Red", "" )
-
-" Control flow
-call s:X( "Statement",   s:terracotta, "", "", "", "" )
-call s:X( "Keyword",     s:orange, "", "", "", "" )
-call s:X( "Conditional", s:orange, "", "", "", "" )
-call s:X( "Operator",    s:orange, "", "", "", "" )
-call s:X( "Label",       s:orange, "", "", "", "" )
-call s:X( "Repeat",      s:orange, "", "", "", "" )
-
-call s:X("Delimiter","668799","","","Grey","")
-
-"call s:X("Identifier",s:steelblue,"","","LightCyan","")
-"call s:X("Function",s:golden,"","","Yellow","")
-call s:X( "Identifier", s:terracotta, "", "", "Orange", "" )
-call s:X( "Function", s:terracotta, "", "", "Orange", "" )
-
-"call s:X("PreProc","8fbfdc","","","LightBlue","")
-call s:X( "PreProc", s:lime, "", "", "Green", "" )
-call s:X( "Macro", s:lime, "", "", "Green", "" )
-call s:X( "Define", s:lime, "", "", "Green", "" )
-call s:X( "PreCondit", s:lime, "", "bold", "Green", "" )
-
-"call s:X("Structure",s:skyblue,"","","LightCyan","")
-"hi! link Operator Structure
-"call s:X("Statement",s:darkblue,"","","DarkBlue","")
-call s:X( "Structure", s:taffy, "", "", "Red", "" )
-call s:X( "StorageClass", s:terracotta, "", "", "Red", "" )
-call s:X( "Typedef", s:taffy, "", "", "Red", "" )
-
-"call s:X("Type",s:paleorange,"","","Yellow","")
-"call s:X("NonText","606060",g:jellybeans_background_color,"",s:termBlack,"")
-call s:X( "Type", s:skyblue, "", "", "Red", "" ) "TODO
-call s:X( "NonText", "606060", g:jupiter_bg_color, "", s:termBlack, "" )
-
-call s:X( "Exception", s:lime, "", "", "", "" )
-
-call s:X( "Error", s:snow, s:taffy, "bold", "", "" )
-call s:X( "Debug", s:snow, "", "bold", "", "" )
-call s:X( "Ignore", s:gravel, "", "", "", "" )
-
-"call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
-call s:X("Search","f0a0c0","302028","underline","Magenta","")
-
 
 " Spell Checking
 if has("spell")
