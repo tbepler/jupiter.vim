@@ -7,7 +7,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "jupiter"
+let colors_name = "yoyodyne"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
   let s:low_color = 0
@@ -250,31 +250,6 @@ endfun
 " }}}
 
 "define some colors - from badwolf colorscheme
-let s:plain          = 'f8f6f2'
-let s:snow           = 'ffffff'
-let s:coal           = '000000'
-let s:brightgravel   = 'd9cec3'
-let s:lightgravel    = '998f84'
-let s:gravel         = '857f78'
-let s:mediumgravel   = '666462'
-let s:deepgravel     = '45413b'
-let s:deepergravel   = '35322d'
-let s:darkgravel     = '242321'
-let s:blackgravel    = '1c1b1a'
-let s:blackestgravel = '141413'
-let s:dalespale      = 'fade3e'
-let s:dirtyblonde    = 'f4cf86'
-let s:taffy          = 'ff2c4b'
-let s:saltwatertaffy = '8cffba'
-let s:tardis         = '0a9dff'
-"let s:orange         = 'ffa724'
-let s:lime           = 'aeee00'
-let s:dress          = 'ff9eb8'
-let s:toffee         = 'b88853'
-let s:coffee         = 'c7915b'
-let s:darkroast      = '88633f'
-let s:darkroast      = '88633f'
-
 " base grey-scale colors
 let s:plain          = 'f8f6f2'
 let s:snow           = 'ffffff'
@@ -290,30 +265,16 @@ let s:blackgravel    = '1c1b1a'
 let s:blackestgravel = '141413'
 let s:blackboard     = "050505"
 
-"red-yellow scale
-let s:r1 = "e62d33"
-let s:r2 = "e65635"
-let s:o1 = "e67f37"
-let s:o2 = "e6a839"
-let s:y1 = "e6d13b"
-let s:y2 = "dee160"
-
-" blue scale
-let s:b1 = "5142ff"
-let s:b2 = "6379f2"
-let s:b3 = "75b0e5"
-let s:b4 = "7fbdb4"
-
 "accent colors
 let s:tardis         = '0a9dff'
-let s:lilac          = "8d469a" 
 let s:lime           = 'aeee00'
+let s:taffy          = 'ff2c4b'
+let s:dalespale      = 'fade3e'
 
 let s:blue1 = [ "E1DFEE", "8879D1", "5A45C3", "3113C7", "1F0892" ]
 let s:blue2 = [ "C5CFFF", "7EA7BD", "3D7B9C", "0F6A9B", "045079" ]
 
 let s:notorange = {}
-"let s:notorange.palest = "FFD9AF"
 let s:notorange.pale = "FFD59A"
 let s:notorange.base = "FFBA58"
 let s:notorange.bright = "FFA019"
@@ -333,6 +294,8 @@ let s:red.base = "FF6458"
 let s:red.bright = "FF2A19"
 let s:red.brightest = "FF1300"
 
+let s:mitred = "A31F34"
+
 let s:blue = {}
 "let s:blue.palest = "AAD7FF"
 let s:blue.pale = "9BCBF6"
@@ -349,9 +312,6 @@ let s:olive          = "99ad6a"
 let s:darkolive      = "556633"
 let s:palegreen      = "799d6a"
 let s:terracotta     = "cf6a4c"
-
-let s:blackboard     = "050505"
-let s:lilac          = "8d469a" 
 
 " Configuration options
 if !exists('g:jupiter_gutter_color')
@@ -394,8 +354,7 @@ else
 endif
 
 if version >= 700
-  "call s:X( "CursorLine", "", s:darkgravel, "", "", s:termBlack )
-  hi clear CursorLine
+  call s:X( "CursorLine", "", s:darkgravel, "", "", s:termBlack )
   call s:X( "CursorColumn", "", s:darkgravel, "", "", s:termBlack )
   call s:X( "CursorLineNR", s:dalespale, "", "none", "White", "" )
  
@@ -406,43 +365,38 @@ if version >= 700
   call s:X( "TabLineSel", s:coal , s:tardis, "", s:termBlack,"White")
 
   " Auto-completion
-  " call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
-  " call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
-  call s:X( "Pmenu", s:plain, s:deepergravel, "", "", "" )
+  call s:X( "Pmenu", s:brightgravel, s:deepergravel, "", "", "" )
   call s:X( "PmenuSel", s:coal, s:tardis, "bold", "", "" )
-  call s:X( "PmenuSbar", "", s:deepergravel, "", "", "" )
-  call s:X( "PmenuThumb", s:brightgravel, "", "", "", "" )
+  call s:X( "PmenuSbar", s:tardis, s:deepergravel, "", "", "" )
+  call s:X( "PmenuThumb", s:brightgravel, s:tardis, "", "", "" )
 endif
 
 "call s:X("Visual","","404040","","",s:termBlack)
-call s:X( "Visual", "", s:deepgravel, "", "", "" )
-call s:X( "VisualNOS", "",  s:deepgravel, "", "", "" )
+call s:X( "Visual", "", s:darkgravel, "", "", "" )
+call s:X( "VisualNOS", "",  s:darkgravel, "", "", "" )
 
 "call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
 call s:X( "Cursor",  s:coal, s:tardis, "bold", "", "" )
 call s:X( "vCursor", s:coal, s:tardis, "bold", "", "" )
 call s:X( "iCursor", s:coal, s:tardis, "", "", "" )
 
-"call s:X("StatusLine","000000","dddddd","italic","","White")
-"call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X( "StatusLine", s:coal, s:tardis, "bold", "", "White" )
-call s:X( "StatusLineNC", s:snow, s:deepgravel, "bold", "White", "Black" )
+call s:X( "StatusLine", s:coal, s:tardis, "bold", "", "" )
+call s:X( "StatusLineNC", s:snow, s:deepgravel, "bold", "", "" )
 
-"call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
 call s:X( "VertSplit", s:snow, s:deepgravel , "", s:termBlack, s:termBlack )
 
-call s:X( "WildMenu", "f0a0c0", "302028", "", "Magenta", "")
+call s:X( "WildMenu", s:dalespale, s:deepgravel, "", "Magenta", "")
 
 "call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X( "LineNr", s:mediumgravel, s:gutter, "", "", "" )
 
-call s:X( "Folded","a0a8b0","384048","italic",s:termBlack,"")
+call s:X( "Folded", s:yellow.pale, s:deepergravel, "italic", s:termBlack, "")
 call s:X( "FoldColumn", "535D66", s:gutter, "", "", s:termBlack )
 call s:X( "SignColumn", "777777", s:gutter, "", "", s:termBlack )
 call s:X( "ColorColumn","","000000","","",s:termBlack)
 
 "call s:X("Directory","dad085","","","Yellow","")
-call s:X( "Directory", s:dirtyblonde, "", "", "Yellow", "" )
+call s:X( "Directory", s:dalespale, "", "", "Yellow", "" )
 
 "call s:X("Title","70b950","","bold","Green","")
 call s:X( "Title", s:lime, "", "", "Green", "" )
@@ -452,7 +406,6 @@ call s:X( "Title", s:lime, "", "", "Green", "" )
 "hi! link MoreMsg Special
 "call s:X("Question","65C254","","","Green","")
 call s:X( "ErrorMsg", s:taffy, "", "bold", "", "DarkRed" )
-hi! link Error ErrorMsg
 call s:X( "MoreMsg", s:dalespale, "", "bold", "", "Yellow" )
 call s:X( "ModeMsg", s:golden, "", "bold", "", "Yellow" )
 call s:X( "Question", s:golden, "", "bold", "", "Yellow" )
@@ -470,14 +423,14 @@ call s:X( "Comment", s:gravel, "", "italic", "", "" )
 " Float
 
 " use pale blue for string and darker blue otherwise 
-call s:X( "Constant", s:blue1[2], "", "", "", "" )
+call s:X( "Constant", s:blue2[3], "", "bold", "", "" )
 call s:X( "String", s:blue2[0], "", "", "", "" )
 "
 " *Identifier
 " Function
 "
 " use pale yellow for identifiers
-call s:X( "Identifier", s:yellow.bright, "", "", "", "Yellow" )
+call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
 "
 " *Statement
 " Conditional
@@ -488,9 +441,9 @@ call s:X( "Identifier", s:yellow.bright, "", "", "", "Yellow" )
 " Exception
 "
 " use red/orange for statements
-call s:X( "Statement", s:notorange.bright, "", "", "", "" )
-call s:X( "Operator", s:red.base, "", "", "", "" )
-call s:X( "Exception", s:lime, "", "", "", "" )
+call s:X( "Statement", s:notorange.brightest, "", "", "", "" )
+call s:X( "Operator", s:yellow.brightest, "", "", "", "" )
+call s:X( "Exception", s:lime, "", "bold", "", "" )
 "
 " *PreProc
 " Include
@@ -507,8 +460,10 @@ call s:X( "PreProc", s:lime, "", "", "", "" )
 " Typedef
 "
 "  use blues for types
-call s:X( "Type", s:blue2[3], "", "", "", "" )
-call s:X( "StorageClass", s:yellow.base, "", "", "", "" )
+call s:X( "Type", s:skyblue, "", "", "", "" )
+call s:X( "StorageClass", s:blue1[1], "", "", "", "" )
+call s:X( "Structure", s:blue1[2], "", "", "", "" )
+call s:X( "Typedef", s:blue1[2], "", "", "", "" )
 "
 " *Special
 " SpecialChar
@@ -516,14 +471,19 @@ call s:X( "StorageClass", s:yellow.base, "", "", "", "" )
 " Delimiter
 " SpecialComment
 " Debug
-"
+call s:X( "Special", s:brightgravel, "", "italic", "", "" )
+hi! link SpecialChar Constant
+call s:X( "Delimiter", s:blue2[1], "", "", "", "" )
+
 " *Underlined
 "
 " *Ignore
 "
 " *Error
+call s:X( "Error", "", s:taffy, "", "", "" )
 "
 " *Todo
+call s:X( "Todo", s:blue2[2], s:yellow.bright, "bold", "", "" )
 
 " Spell Checking
 if has("spell")
@@ -558,9 +518,9 @@ hi! link phpVarSelector Identifier
 " Python
 
 hi! link pythonOperator     Operator
-hi! link pythonBuiltin      Structure
-hi! link pythonBuiltinObj   Structure
-hi! link pythonBuiltinFunc  Structure
+hi! link pythonBuiltin      Type
+hi! link pythonBuiltinObj   Type
+hi! link pythonBuiltinFunc  Type
 hi! link pythonEscape       Structure
 hi! link pythonException    Exception
 hi! link pythonExceptions   Exception
