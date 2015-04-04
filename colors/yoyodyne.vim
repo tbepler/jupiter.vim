@@ -308,9 +308,6 @@ let s:steelblue      = "c6b6ee"
 let s:darkblue       = "8197bf"
 let s:golden         = "fad07a"
 let s:paleorange     = "ffb964"
-let s:olive          = "99ad6a"
-let s:darkolive      = "556633"
-let s:palegreen      = "799d6a"
 let s:terracotta     = "cf6a4c"
 
 " Configuration options
@@ -406,10 +403,10 @@ call s:X( "Title", s:lime, "", "", "Green", "" )
 "hi! link MoreMsg Special
 "call s:X("Question","65C254","","","Green","")
 call s:X( "ErrorMsg", s:taffy, "", "bold", "", "DarkRed" )
-call s:X( "MoreMsg", s:dalespale, "", "bold", "", "Yellow" )
-call s:X( "ModeMsg", s:golden, "", "bold", "", "Yellow" )
-call s:X( "Question", s:golden, "", "bold", "", "Yellow" )
-call s:X( "WarningMsg", s:dress, "", "bold", "", "Red" )
+call s:X( "MoreMsg", s:lightgravel, "", "bold", "", "Yellow" )
+call s:X( "ModeMsg", s:lightgravel, "", "bold", "", "Yellow" )
+call s:X( "Question", s:blue1[2], "", "bold", "", "Yellow" )
+call s:X( "WarningMsg", s:yellow.base, "", "bold", "", "Red" )
 
 " ##### Syntax groups
 " *Comment
@@ -441,7 +438,7 @@ call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
 " Exception
 "
 " use red/orange for statements
-call s:X( "Statement", s:notorange.brightest, "", "", "", "" )
+call s:X( "Statement", s:notorange.base, "", "", "", "" )
 call s:X( "Operator", s:yellow.brightest, "", "", "", "" )
 call s:X( "Exception", s:lime, "", "bold", "", "" )
 "
