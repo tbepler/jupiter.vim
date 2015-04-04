@@ -420,14 +420,16 @@ call s:X( "Comment", s:gravel, "", "italic", "", "" )
 " Float
 
 " use pale blue for string and darker blue otherwise 
-call s:X( "Constant", s:blue2[3], "", "bold", "", "" )
+"call s:X( "Constant", "003CFF", "", "bold", "", "" )
+call s:X( "Constant", "E05016", "", "bold", "", "" )
 call s:X( "String", s:blue2[0], "", "", "", "" )
 "
 " *Identifier
 " Function
 "
 " use pale yellow for identifiers
-call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
+"call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
+call s:X( "Identifier", "6478D1", "", "", "", "Yellow" )
 "
 " *Statement
 " Conditional
@@ -438,8 +440,8 @@ call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
 " Exception
 "
 " use red/orange for statements
-call s:X( "Statement", s:notorange.base, "", "", "", "" )
-call s:X( "Operator", s:yellow.brightest, "", "", "", "" )
+call s:X( "Statement", "FCEC6D", "", "", "", "" )
+call s:X( "Operator", "E0D316", "", "", "", "" )
 call s:X( "Exception", s:lime, "", "bold", "", "" )
 "
 " *PreProc
@@ -457,7 +459,7 @@ call s:X( "PreProc", s:lime, "", "", "", "" )
 " Typedef
 "
 "  use blues for types
-call s:X( "Type", s:skyblue, "", "", "", "" )
+call s:X( "Type", "5AC2FA", "", "", "", "" )
 call s:X( "StorageClass", s:blue1[1], "", "", "", "" )
 call s:X( "Structure", s:blue1[2], "", "", "", "" )
 call s:X( "Typedef", s:blue1[2], "", "", "", "" )
