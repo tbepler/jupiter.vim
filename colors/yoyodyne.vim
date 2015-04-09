@@ -429,7 +429,7 @@ call s:X( "String", s:blue2[0], "", "", "", "" )
 "
 " use pale yellow for identifiers
 "call s:X( "Identifier", s:blue1[1], "", "", "", "Yellow" )
-call s:X( "Identifier", "6478D1", "", "", "", "Yellow" )
+call s:X( "Identifier", "597BE3", "", "", "", "Yellow" )
 "
 " *Statement
 " Conditional
@@ -459,7 +459,7 @@ call s:X( "PreProc", s:lime, "", "", "", "" )
 " Typedef
 "
 "  use blues for types
-call s:X( "Type", "5AC2FA", "", "", "", "" )
+call s:X( "Type", "8ED4FA", "", "", "", "" )
 call s:X( "StorageClass", s:blue1[1], "", "", "", "" )
 call s:X( "Structure", s:blue1[2], "", "", "", "" )
 call s:X( "Typedef", s:blue1[2], "", "", "", "" )
