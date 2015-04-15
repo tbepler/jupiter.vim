@@ -392,6 +392,8 @@ call s:X( "FoldColumn", "535D66", s:gutter, "", "", s:termBlack )
 call s:X( "SignColumn", "777777", s:gutter, "", "", s:termBlack )
 call s:X( "ColorColumn","","000000","","",s:termBlack)
 
+call s:X( "Search", "", s:deepgravel, "bold", "", "" )
+
 "call s:X("Directory","dad085","","","Yellow","")
 call s:X( "Directory", s:dalespale, "", "", "Yellow", "" )
 
